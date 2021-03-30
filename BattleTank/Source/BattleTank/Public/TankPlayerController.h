@@ -19,6 +19,21 @@ private:
 	ATank* GetControlledTank() const;
 
 	void BeginPlay() override;
+	void Tick(float DeltaSeconds) override;
 	
+
+	// Starts moving the barrel of the tank to where
+	// the crosshairs intersect with the world.
+	void AimTowardsCrosshair();
+	
+	// Return an Out parameter, true if hit landscape
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
+
+	UPROPERTY(EditAnywhere)
+		float CrossHairLocationX = 0.5;
+	UPROPERTY(EditAnywhere)
+		float CrossHairLocationY = 0.33333;
+	UPROPERTY(EditAnywhere)
+		int32 LineTraceRange = 1000000;
 	
 };

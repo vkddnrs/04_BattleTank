@@ -5,6 +5,8 @@
 
 void ATankAIController::BeginPlay()
 {
+	Super::BeginPlay();
+	
 	if (GetPosessedTank())
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController posesses: %s"), *GetPosessedTank()->GetName())
 	else
