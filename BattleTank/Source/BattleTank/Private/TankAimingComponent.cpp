@@ -55,13 +55,28 @@ void UTankAimingComponent::AimAt(const FVector WorldSpaceAim, float LaunchSpeed)
 			false,
 			0.f,
 			0.f,
-			ESuggestProjVelocityTraceOption::DoNotTrace
+			ESuggestProjVelocityTraceOption::DoNotTrace/*,
+			FCollisionResponseParams(),
+			TArray < AActor* >(),
+			true*/
 		))
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-	
-		auto BarrelLocation = Barrel->GetComponentLocation().ToString();
-		UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s "), *GetOwner()->GetName(),	*AimDirection.ToString());
+		MoveBarrelTowards(AimDirection);
+		//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s "), *GetOwner()->GetName(),	*AimDirection.ToString());
 	}	
+}
+
+void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+{
+	// work-out difference between current barrel rotation, and AimDirection
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto AimAsRotator = AimDirection.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s "), *AimAsRotator.ToString())
+	// move the barrel the right amount this frame
+
+	// given the max elevation speed, and the frame time
+	
 }
 

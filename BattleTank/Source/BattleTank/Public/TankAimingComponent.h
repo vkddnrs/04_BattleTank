@@ -16,6 +16,8 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+
+	// TODO add SetTurretReference     
 	
 protected:
 	// Called when the game starts
@@ -28,7 +30,8 @@ public:
 	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
 	
 private:
-	UStaticMeshComponent* Barrel = nullptr;
+	UStaticMeshComponent* Barrel = nullptr; // ствол пушки
+	void MoveBarrelTowards(FVector AimDirection);
 
 
 		
