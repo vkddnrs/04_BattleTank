@@ -23,12 +23,17 @@ void ATankAIController::BeginPlay()
 void ATankAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	
+
+	// TODO Move towards the player
+
+	// Aim towards the player	
 	ATank* AimTank = GetPlayerTank();
 	if (AimTank)
 		GetPosessedTank()->AimAt(AimTank->GetActorLocation());
 	else
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController is not aimed"))
+
+	// Fire if ready
 }
 
 ATank* ATankAIController::GetPosessedTank() const
