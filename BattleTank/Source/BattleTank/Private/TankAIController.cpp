@@ -12,11 +12,23 @@ void ATankAIController::BeginPlay()
 	else
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController not posessing tank"))
 
-	if(GetPlayerTank())
-		UE_LOG(LogTemp, Warning, TEXT("TankAIController aimed at: %s"), *GetPlayerTank()->GetName())
+	//ATank* Tank = GetPlayerTank();
+	//if (Tank)
+	//	Tank->AimAt(Tank->GetActorLocation());
+	//else
+	//	UE_LOG(LogTemp, Warning, TEXT("TankAIController is not aimed"))
+	
+}
+
+void ATankAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	
+	ATank* AimTank = GetPlayerTank();
+	if (AimTank)
+		GetPosessedTank()->AimAt(AimTank->GetActorLocation());
 	else
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController is not aimed"))
-	
 }
 
 ATank* ATankAIController::GetPosessedTank() const
