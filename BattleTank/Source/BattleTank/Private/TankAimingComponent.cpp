@@ -63,18 +63,25 @@ void UTankAimingComponent::AimAt(const FVector WorldSpaceAim, float LaunchSpeed)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-		//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s "), *GetOwner()->GetName(),	*AimDirection.ToString());
-	}	
+		//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s "), *GetOwner()->GetName(), *AimDirection.ToString());
+		float Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f Aim solution found"), Time)
+	}
+        else 
+	{
+		float Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f Aim solution don't found"), Time)
+        }
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	// work-out difference between current barrel rotation, and AimDirection
-	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
-	auto AimAsRotator = AimDirection.Rotation();
-	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	FRotator BarrelRotator = Barrel->GetForwardVector().Rotation();
+	FRotator AimAsRotator = AimDirection.Rotation();
+	float AngleRotation = AimAsRotator.Pitch - BarrelRotator.Pitch;
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s "), *AimAsRotator.ToString())
 
-	//Barrel->Elevate()
+	Barrel->Elevate(5);
 }
 
