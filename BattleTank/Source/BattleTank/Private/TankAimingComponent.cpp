@@ -88,7 +88,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	float AngleBurrelRotation = AimAsRotator.Pitch - BarrelRotator.Pitch;
 	float AngleTurretRotation = AimAsRotator.Yaw - BarrelRotator.Yaw;
 	
-	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s "), *AimAsRotator.ToString())
+	//UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s "), *AimAsRotator.ToString())
 
 	Barrel->Elevate(AngleBurrelRotation);
 	Turret->Rotation(AngleTurretRotation);
