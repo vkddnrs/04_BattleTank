@@ -59,6 +59,13 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
+//void ATank::SetTrackReference(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
+//{
+//	if(!LeftTrackToSet && !RightTrackToSet) { return; }
+//	LeftTrack = LeftTrackToSet;
+//	RightTrack = RightTrackToSet;
+//}
+
 void ATank::Fire()
 {
 	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
