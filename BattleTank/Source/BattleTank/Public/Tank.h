@@ -7,6 +7,7 @@
 #include "Tank.generated.h"
 
 class UTankAimingComponent;
+class UTankMovementComponent;
 class UTankBarrel;
 class UTankTurret;
 class UTankTrack;
@@ -61,6 +62,10 @@ private:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;	
 	UTankBarrel* Barrel = nullptr;						// local barrel reference for spawning projectile
+	
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	UTankMovementComponent* TankMovementComponent = nullptr;
+	
 	//UTankTrack* LeftTrack = nullptr;
 	//UTankTrack* RightTrack = nullptr;
 	
