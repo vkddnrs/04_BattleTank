@@ -10,7 +10,7 @@ class UTankAimingComponent;
 class UTankMovementComponent;
 class UTankBarrel;
 class UTankTurret;
-class UTankTrack;
+//class UTankTrack;
 class AProjectile;
 
 UCLASS()
@@ -43,7 +43,7 @@ private:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetTurretReference(UTankTurret* TurretToSet);
 	//UFUNCTION(BlueprintCallable, Category = Setup)
-	//	void SetTrackReference(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
+	//	void SetTracks(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 
 
 	// Called to bind functionality to input

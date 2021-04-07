@@ -4,7 +4,7 @@
 #include "TankTurret.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
-#include "TankMovementComponent.h"
+//#include "TankMovementComponent.h"
 #include "Tank.h"
 
 // Sets default values
@@ -14,7 +14,7 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = true;
 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>("Aiming Component");
-	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("TankMovementComponent");	
+	//TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("TankMovementComponent");	
 
 }
 
@@ -60,7 +60,7 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
-//void ATank::SetTrackReference(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
+//void ATank::SetTracks(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 //{
 //	if(!LeftTrackToSet && !RightTrackToSet) { return; }
 //	LeftTrack = LeftTrackToSet;
