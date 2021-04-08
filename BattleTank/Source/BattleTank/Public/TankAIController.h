@@ -19,6 +19,7 @@ private:
 	void BeginPlay() override;
 	void Tick(float DeltaSeconds) override;
 
-	float AcceptanceRadius = 3000; // Yow close can the AI tank get
+	UPROPERTY(EditAnywhere, Category = AISetup)
+	float AcceptanceRadius = 300; // Yow close can the AI tank get
 		
 };
