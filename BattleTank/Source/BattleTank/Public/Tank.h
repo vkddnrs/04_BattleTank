@@ -60,16 +60,15 @@ private:
 	
 
 protected:
-	UTankAimingComponent* TankAimingComponent = nullptr;	
+	UPROPERTY(BlueprintReadOnly, Category = Setup)
+		UTankAimingComponent* TankAimingComponent = nullptr;
+	UPROPERTY(BlueprintReadOnly, Category = Setup)
+		UTankMovementComponent* TankMovementComponent = nullptr;
+	
 	UTankBarrel* Barrel = nullptr;						// local barrel reference for spawning projectile
 	
-	UPROPERTY(BlueprintReadOnly, Category = Movement)
-	UTankMovementComponent* TankMovementComponent = nullptr;
+
 	
 	//UTankTrack* LeftTrack = nullptr;
 	//UTankTrack* RightTrack = nullptr;
-	
-	
-	
-
 };
