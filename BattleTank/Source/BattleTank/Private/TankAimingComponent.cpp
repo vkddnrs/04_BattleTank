@@ -14,17 +14,6 @@ UTankAimingComponent::UTankAimingComponent()
 
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
-{
-	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
-	Turret = TurretToSet;
-}
-
-
 // Called when the game starts
 void UTankAimingComponent::BeginPlay()
 {
@@ -42,6 +31,16 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 	// ...
 }
+
+//***************************************************************
+
+
+void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
+{
+	Barrel = BarrelToSet;
+	Turret = TurretToSet;
+}
+
 
 void UTankAimingComponent::AimAt(const FVector WorldSpaceAim, float LaunchSpeed)
 {
@@ -69,19 +68,12 @@ void UTankAimingComponent::AimAt(const FVector WorldSpaceAim, float LaunchSpeed)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-		//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s "), *GetOwner()->GetName(), *AimDirection.ToString());
-		//float Time = GetWorld()->GetTimeSeconds();
-		//UE_LOG(LogTemp, Warning, TEXT("%f Aim solution found"), Time)
-	}
-	else
-	{
-		//float Time = GetWorld()->GetTimeSeconds();
-		//UE_LOG(LogTemp, Warning, TEXT("%f Aim solution don't found"), Time)
 	}
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
+	if(!Barrel || !Turret) { return; }
 	// work-out difference between current barrel rotation, and AimDirection
 	FRotator BarrelRotator = Barrel->GetForwardVector().Rotation();
 	FRotator AimAsRotator = AimDirection.Rotation();

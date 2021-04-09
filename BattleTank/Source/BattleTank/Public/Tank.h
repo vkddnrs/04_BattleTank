@@ -28,6 +28,9 @@ private:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
  //************************************************
 
@@ -38,16 +41,7 @@ public:
 		void Fire();
 	
 private:
-	UFUNCTION(BlueprintCallable, Category=Setup)
-		void SetBarrelReference(UTankBarrel* BarrelToSet);
-	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetTurretReference(UTankTurret* TurretToSet);
-	//UFUNCTION(BlueprintCallable, Category = Setup)
-	//	void SetTracks(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 4000; // projectile starting speed 
