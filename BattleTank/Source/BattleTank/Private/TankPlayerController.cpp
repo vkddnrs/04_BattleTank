@@ -16,7 +16,7 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 	auto AimComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
 
-	if(AimComponent)
+	if(ensure(AimComponent))
 	{
 		FoundAimingComponent(AimComponent);
 		UE_LOG(LogTemp, Warning, TEXT("ATankPlayerController find aiming component at Begin Play"))
@@ -34,7 +34,7 @@ void ATankPlayerController::Tick(float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetControlledTank())
+	if (!ensure(GetControlledTank()))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("ATankPlayerController not posessing tank"))
 		return;
