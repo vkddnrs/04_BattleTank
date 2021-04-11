@@ -50,15 +50,16 @@ private:
   	UTankBarrel* Barrel = nullptr; // ствол пушки
 	UTankTurret* Turret = nullptr; // башня
 
+	FVector AimDirection = FVector();
 
-
-	void MoveBarrelTowards(FVector AimDirection);
+	void MoveBarrelTowards();
+	bool IsBarrelMoving();
 
 protected:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	  float LaunchSpeed = 4000; // projectile starting speed
 	UPROPERTY(BlueprintReadOnly, Category = State)
-	  EFiringState FiringStatus = EFiringState::Aiming;
+	  EFiringState FiringState = EFiringState::Reloading;
 
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
@@ -67,3 +68,5 @@ protected:
 	double LastFireTime = 0;
 	
 };
+
+
