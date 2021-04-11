@@ -6,11 +6,9 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
-class UTankAimingComponent;
-class UTankMovementComponent;
+//class UTankMovementComponent;
 class UTankBarrel;
 class UTankTurret;
-//class UTankTrack;
 class AProjectile;
 
 UCLASS()
@@ -35,13 +33,10 @@ private:
  //************************************************
 
 public:
-	void AimAt(FVector HitLocation);
-	
 	UFUNCTION(BlueprintCallable)
-		void Fire();
+	void Fire();
 	
 private:
-
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 4000; // projectile starting speed 
@@ -55,10 +50,10 @@ private:
 
 protected:
 	//UPROPERTY(BlueprintReadOnly, Category = Setup)
-	UTankAimingComponent* TankAimingComponent = nullptr;
+	//UTankAimingComponent* TankAimingComponent = nullptr;
 	
-	UPROPERTY(BlueprintReadOnly, Category = Setup)
-		UTankMovementComponent* TankMovementComponent = nullptr;
+	//UPROPERTY(BlueprintReadOnly, Category = Setup)
+	//	UTankMovementComponent* TankMovementComponent = nullptr;
 	
 	UTankBarrel* Barrel = nullptr;						// local barrel reference for spawning projectile
 	

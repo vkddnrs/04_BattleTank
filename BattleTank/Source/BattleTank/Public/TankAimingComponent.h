@@ -39,15 +39,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
-	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
+	void AimAt(FVector WorldSpaceAim);
 	
 private:
-	UTankBarrel* Barrel = nullptr; // ствол пушки
+  	UTankBarrel* Barrel = nullptr; // ствол пушки
 	UTankTurret* Turret = nullptr; // башня
+
+
+
 	void MoveBarrelTowards(FVector AimDirection);
 
 protected:
+	UPROPERTY(EditAnywhere, Category = Firing)
+	  float LaunchSpeed = 4000; // projectile starting speed
 	UPROPERTY(BlueprintReadOnly, Category = State)
-	EFiringState FiringStatus = EFiringState::Aiming;
+	  EFiringState FiringStatus = EFiringState::Aiming;
 	
 };
