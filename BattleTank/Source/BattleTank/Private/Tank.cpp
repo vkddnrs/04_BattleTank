@@ -16,7 +16,7 @@ ATank::ATank()
 	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>("Aiming Component");
 	//TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("TankMovementComponent");
 
-	UE_LOG(LogTemp, Warning, TEXT("DONKEY: ATank %s Constructor Cpp"), *GetName())
+	//UE_LOG(LogTemp, Warning, TEXT("DONKEY: ATank %s Constructor Cpp"), *GetName())
 
 }
 
@@ -25,8 +25,9 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	UE_LOG(LogTemp, Warning, TEXT("DONKEY: ATank %s Begin_Play  Cpp"), *GetName())
+
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+	//UE_LOG(LogTemp, Warning, TEXT("DONKEY: ATank %s Begin_Play  Cpp"), *GetName())
 }
 
 // Called every frame
@@ -46,8 +47,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::AimAt(FVector HitLocation)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *GetName(), *HitLocation.ToString())
-	//if(!TankAimingComponent) { return; }
-	//TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+	if(!ensure(TankAimingComponent)) { return; }
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 
