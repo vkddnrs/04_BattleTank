@@ -24,7 +24,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = AISetup)
 	float AcceptanceRadius = 300; // Yow close can the AI tank get
 
-	UTankAimingComponent* AimComponent = nullptr;
+	UTankAimingComponent* AimingComponent = nullptr;
 	//ATank* PlayerTank = nullptr;
 	//ATank* ControlledTank = nullptr;
         

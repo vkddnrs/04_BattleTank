@@ -41,6 +41,6 @@ protected:
 		int32 LineTraceRange = 1000000;
 
 private:
-	UTankAimingComponent* AimComponent = nullptr;
+	UTankAimingComponent* AimingComponent = nullptr;
 	
 };

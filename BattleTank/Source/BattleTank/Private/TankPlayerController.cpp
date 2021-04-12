@@ -8,11 +8,11 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	AimComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+	AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 
-	if(!ensure(AimComponent)) { return; }
+	if(!ensure(AimingComponent)) { return; }
 
-        FoundAimingComponent(AimComponent);
+    FoundAimingComponent(AimingComponent);
 
 }
 
@@ -32,7 +32,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *HitLocation.ToString())
 		// Tell controlled tank to aim at this point
-		AimComponent->AimAt(HitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
 	
 }

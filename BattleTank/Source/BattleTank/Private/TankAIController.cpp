@@ -12,7 +12,7 @@ void ATankAIController::BeginPlay()
 
 	//PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	//ControlledTank = GetPawn();
-	//AimComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
+	//AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	
 }
 
@@ -22,15 +22,15 @@ void ATankAIController::Tick(float DeltaSeconds)
 
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	auto ControlledTank = GetPawn();
-	AimComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
+	AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 
-	if(!ensure(PlayerTank) || !ensure(AimComponent)) { return; }
+	if(!ensure(PlayerTank) || !ensure(AimingComponent)) { return; }
 
 	// Move towards the player
 	MoveToActor(PlayerTank, AcceptanceRadius);
 
-	AimComponent->AimAt(PlayerTank->GetActorLocation());
-	AimComponent->Fire();
+	AimingComponent->AimAt(PlayerTank->GetActorLocation());
+	AimingComponent->Fire();
 	
 }
 
