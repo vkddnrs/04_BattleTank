@@ -9,6 +9,12 @@ UTankTrack::UTankTrack()
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
+void UTankTrack::BeginPlay()
+{
+	Super::BeginPlay();
+	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+}
+
 void UTankTrack::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
@@ -20,11 +26,11 @@ void UTankTrack::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	auto CorrectionAcceleration = -SlippegeSpeed / DeltaTime * GetRightVector();
 	// Calculate and apply sideways for (F = m * a)
 	auto TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-	auto CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 2; // Two tracks
+	auto CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 4; // Two tracks
 	
 	TankRoot->AddForce(CorrectionForce);
 
-	UE_LOG(LogTemp, Warning, TEXT("CorrectionForce : %s"), *CorrectionForce.ToString())
+	//UE_LOG(LogTemp, Warning, TEXT("CorrectionForce : %s"), *CorrectionForce.ToString())
 }
 
 void UTankTrack::SetThrottle(float Throttle)
@@ -38,4 +44,10 @@ void UTankTrack::SetThrottle(float Throttle)
 	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
 	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
 	//UE_LOG(LogTemp, Warning, TEXT("ForceApplied : %s, ForceLocation : %s"), *ForceApplied.ToString(), *ForceLocation.ToString())
+}
+
+void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComponent, FVector NormalImpuls, const FHitResult& Hit)
+{
+	UE_LOG(LogTemp, Warning, TEXT("I'm hit, I'm hit!"))
 }
