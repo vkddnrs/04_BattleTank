@@ -15,23 +15,20 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 {
 	if (!ensure(LeftTrack || RightTrack)) { return; }
 
-	if (Throw)
-	{
-		LeftTrack->SetThrottle(Throw);
-		RightTrack->SetThrottle(Throw);	
-		//UE_LOG(LogTemp, Warning, TEXT("%s IntendMoveForward Throw %f"), *GetOwner()->GetName(), Throw)
-	}
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(Throw);	
+	//UE_LOG(LogTemp, Warning, TEXT("%s IntendMoveForward Throw %f"), *GetOwner()->GetName(), Throw)
+
 }
 
 void UTankMovementComponent::IntendMoveRight(float Throw)
 {
 	if (!ensure(LeftTrack || RightTrack)) { return; }
-	if(Throw)
-	{
-		LeftTrack->SetThrottle(Throw);
-		RightTrack->SetThrottle(-Throw);
-		//UE_LOG(LogTemp, Warning, TEXT("%s IntendMoveRight Throw %f"), *GetOwner()->GetName(), Throw)
-	}
+
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
+	//UE_LOG(LogTemp, Warning, TEXT("%s IntendMoveRight Throw %f"), *GetOwner()->GetName(), Throw)
+
 }
 
 void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
