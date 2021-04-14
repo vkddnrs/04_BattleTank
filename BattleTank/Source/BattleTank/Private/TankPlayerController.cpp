@@ -63,7 +63,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 			return true;
 		}
 		HitLocation = FVector(0.f);
-		return true;
+		return false;
 	}
 	//UE_LOG(LogTemp, Warning, TEXT("Direction: %s"), *LookDirection.ToString())
 	
