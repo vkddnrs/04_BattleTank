@@ -58,7 +58,7 @@ void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComponent, FVector NormalImpuls, const FHitResult& Hit)
 {
 	DriveTrack();
-	//ApplaySidewaysForce();	
+	ApplaySidewaysForce();	
 	
 	CurrentThrottle = 0;
 	//UE_LOG(LogTemp, Warning, TEXT("A'm hit!"))

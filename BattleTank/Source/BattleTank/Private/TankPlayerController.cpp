@@ -33,8 +33,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 		//UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *HitLocation.ToString())
 		// Tell controlled tank to aim at this point
 		AimingComponent->AimAt(HitLocation);
-	}
-	
+	}	
 }
 
 // Get world location if linetrace through crosshair

@@ -12,7 +12,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	AmmoOut
 };
 
 class UTankTurret;
@@ -45,7 +46,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 	void Fire();
 	
-	
+	inline EFiringState GetFiringState() const;
+	inline int32 GetAmmoCount() const;
+
 private:
   	UTankBarrel* Barrel = nullptr; // ствол пушки
 	UTankTurret* Turret = nullptr; // башня
@@ -56,12 +59,15 @@ private:
 	bool IsBarrelMoving();
 
 protected:
-	UPROPERTY(EditAnywhere, Category = Firing)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Firing")
+	int32 AmmoCount = 20;
+
+	UPROPERTY(EditAnywhere, Category = "Firing")
 	  float LaunchSpeed = 4000; // projectile starting speed
-	UPROPERTY(BlueprintReadOnly, Category = State)
+	UPROPERTY(BlueprintReadOnly, Category = "State")
 	  EFiringState FiringState = EFiringState::Reloading;
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	float ReloadTimeInSeconds = 3;

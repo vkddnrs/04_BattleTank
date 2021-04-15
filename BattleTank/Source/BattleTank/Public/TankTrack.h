@@ -26,13 +26,13 @@ public:
 	//***************************************
 	
 	// Sets a throttle between -1 and +1
-	UFUNCTION(BlueprintCallable, Category = Input)
+	UFUNCTION(BlueprintCallable, Category = "Input")
 		void SetThrottle(float Throttle);
 	
 protected:
 	// max force per track, in Newtons
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
-		float TrackMaxDrivingForce = 43000000.0; // Assume 40 tonne tank * 1g (10 m/s^2) acceleration
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		float TrackMaxDrivingForce = 63000000.0; // Assume 40 tonne tank * 1g (10 m/s^2) acceleration
 
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
