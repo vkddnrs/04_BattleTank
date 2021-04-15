@@ -100,10 +100,10 @@ void UTankAimingComponent::MoveBarrelTowards()
 
 	Barrel->Elevate(AngleBurrelRotation);
 
-	if (AngleTurretRotation > 180)
-		AngleTurretRotation = AngleTurretRotation - 360;
-	
-	Turret->Rotation(AngleTurretRotation);
+	if (FMath::Abs(AngleTurretRotation) < 180)
+		Turret->Rotation(AngleTurretRotation);
+	else 
+		Turret->Rotation(-AngleTurretRotation);
 }
 
 void UTankAimingComponent::Fire()
