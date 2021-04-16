@@ -60,17 +60,18 @@ private:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Firing")
-	int32 AmmoCount = 20;
-
+		int32 AmmoCount = 20;
 	UPROPERTY(EditAnywhere, Category = "Firing")
 	  float LaunchSpeed = 4000; // projectile starting speed
+	UPROPERTY(EditAnywhere, Category = "Firing")
+		float ReloadTimeInSeconds = 3;
+	
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	  EFiringState FiringState = EFiringState::Reloading;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
-	float ReloadTimeInSeconds = 3;
 	double LastFireTime = 0;
 	
 };
