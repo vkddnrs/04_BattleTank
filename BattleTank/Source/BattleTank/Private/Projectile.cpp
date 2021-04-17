@@ -13,13 +13,14 @@ AProjectile::AProjectile()
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
 	ProjectileMovement->bAutoActivate = false;
 
+
 	CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>("CollisionMesh");
 	SetRootComponent(CollisionMesh);
 	CollisionMesh->SetNotifyRigidBodyCollision(true);
 	CollisionMesh->SetVisibility(false);
 	
-	LaunchBlast = CreateDefaultSubobject<UParticleSystemComponent>("LaunchBlast");
-	LaunchBlast->AttachTo(RootComponent);	
+	//LaunchBlast = CreateDefaultSubobject<UParticleSystemComponent>("LaunchBlast");
+    //LaunchBlast->AttachTo(RootComponent);	
 
 }
 
