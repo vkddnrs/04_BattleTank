@@ -44,7 +44,8 @@ protected:
 		class URadialForceComponent* ExplosionForce = nullptr;
 	
 	UFUNCTION()
-		void OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
+			FVector NormalImpuls, const FHitResult& Hit);
 	
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
