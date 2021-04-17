@@ -30,14 +30,20 @@ public:
 public:
 	void LaunchProjectile(float Speed);
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-		UParticleSystemComponent* LaunchBlast;
+
 
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		UStaticMeshComponent* CollisionMesh;
 
-
+	UPROPERTY(VisibleAnywhere, Category = "ParticlesSystem")
+		UParticleSystemComponent* LaunchBlast;
+	UPROPERTY(VisibleAnywhere, Category = "ParticlesSystem")
+		UParticleSystemComponent* ImpactBlast;
+	
+	UFUNCTION()
+		void OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);
+	
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
 	
