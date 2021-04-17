@@ -34,12 +34,14 @@ public:
 
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-		UStaticMeshComponent* CollisionMesh;
+		UStaticMeshComponent* CollisionMesh = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = "ParticlesSystem")
-		UParticleSystemComponent* LaunchBlast;
+		UParticleSystemComponent* LaunchBlast = nullptr;
 	UPROPERTY(VisibleAnywhere, Category = "ParticlesSystem")
-		UParticleSystemComponent* ImpactBlast;
+		UParticleSystemComponent* ImpactBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+		class URadialForceComponent* ExplosionForce = nullptr;
 	
 	UFUNCTION()
 		void OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);

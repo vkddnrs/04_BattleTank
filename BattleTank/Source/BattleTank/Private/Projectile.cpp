@@ -2,7 +2,10 @@
 
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 #include "Projectile.h"
+
+
 
 // Sets default values
 AProjectile::AProjectile()
@@ -26,6 +29,10 @@ AProjectile::AProjectile()
 	ImpactBlast = CreateDefaultSubobject<UParticleSystemComponent>("ImpactBlast");
 	ImpactBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 	ImpactBlast->SetAutoActivate(false);
+
+	ExplosionForce = CreateDefaultSubobject<URadialForceComponent>("ExplosionForce");
+	ExplosionForce->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	//ExplosionForce->SetAutoActivate(false);
 
 }
 
@@ -54,6 +61,7 @@ void AProjectile::OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImp
 {
 	LaunchBlast->Deactivate();
 	ImpactBlast->Activate(true);
+	ExplosionForce->FireImpulse();
 	//Destroy();
 }
 
