@@ -63,7 +63,17 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	LaunchBlast->Deactivate();
 	ImpactBlast->Activate(true);
 	ExplosionForce->FireImpulse();
-	SetRootComponent(LaunchBlast);
-	CollisionMesh->DestroyComponent();
+	///************
+	//SetRootComponent(LaunchBlast); начальный вариант
+	//CollisionMesh->DestroyComponent();
+	///**************
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AProjectile::TimerProjectileDestroy, DestroyDelay);
+}
+
+void AProjectile::TimerProjectileDestroy()
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s is destroy"), *GetName());
+	Destroy();
 }
 

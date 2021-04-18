@@ -42,6 +42,8 @@ protected:
 		UParticleSystemComponent* ImpactBlast = nullptr;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		class URadialForceComponent* ExplosionForce = nullptr;
+	UPROPERTY(EditAnywhere, Category = "Timer")
+		float DestroyDelay = 1;
 	
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
@@ -49,6 +51,8 @@ protected:
 	
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
+	void TimerProjectileDestroy();
+	
 	
 
 };
