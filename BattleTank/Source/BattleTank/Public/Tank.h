@@ -28,4 +28,12 @@ private:
 	
  //************************************************
 
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		float Health = 100;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Health")
+		float CurrentHealth = Health;
 };

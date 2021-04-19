@@ -36,5 +36,18 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator,
+	AActor* DamageCauser)
+{
+	float DamageToApply = FMath::Clamp<float>(DamageAmount, 0, CurrentHealth);
+	CurrentHealth -= DamageToApply;
+	UE_LOG(LogTemp, Warning, TEXT("Damage to %s:  DamageAmount = %f	DamageToApply = %f"), *GetName(), DamageAmount, DamageToApply)
+
+	if(CurrentHealth <= 0.0)
+		UE_LOG(LogTemp, Warning, TEXT("%s is died"), *GetName())
+	
+	return DamageToApply;
+}
+
 
 

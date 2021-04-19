@@ -33,10 +33,6 @@ void UTankTrack::ApplaySidewaysForce()
 void UTankTrack::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	
-
-	//UE_LOG(LogTemp, Warning, TEXT("CorrectionForce : %s"), *CorrectionForce.ToString())
 }
 
 void UTankTrack::DriveTrack()
