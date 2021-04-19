@@ -29,6 +29,13 @@ void ATank::Tick(float DeltaTime)
 
 }
 
+////////////////////////////
+
+inline float ATank::GetHealthPercent() const
+{
+	return  CurrentHealth / Health;
+}
+
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -48,6 +55,8 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, ACo
 	
 	return DamageToApply;
 }
+
+
 
 
 
