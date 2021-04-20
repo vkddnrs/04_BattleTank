@@ -28,10 +28,7 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
  //************************************************
-
-	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
-	
-	
+		
 public:
 	// Return current health as a percentage of starting health, between 0 and 1 
 	UFUNCTION(BlueprintPure, Category = "Health")		
@@ -42,8 +39,11 @@ public:
 protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		float Health = 100;
+		float Health = 100.f;
 	
 	UPROPERTY(VisibleAnywhere, Category = "Health")
-		float CurrentHealth = Health;
+		float CurrentHealth = 0.f;
+
+private:
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 };

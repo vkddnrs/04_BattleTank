@@ -8,10 +8,6 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>("Aiming Component");
-	//TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("TankMovementComponent");
-
 }
 
 
@@ -20,13 +16,13 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
+	CurrentHealth = Health;
 }
 
 // Called every frame
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 ////////////////////////////
@@ -40,7 +36,6 @@ inline float ATank::GetHealthPercent() const
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator,
@@ -48,7 +43,7 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, ACo
 {
 	float DamageToApply = FMath::Clamp<float>(DamageAmount, 0, CurrentHealth);
 	CurrentHealth -= DamageToApply;
-	UE_LOG(LogTemp, Warning, TEXT("Damage to %s:  DamageAmount = %f	DamageToApply = %f"), *GetName(), DamageAmount, DamageToApply)
+	//UE_LOG(LogTemp, Warning, TEXT("Damage to %s:  DamageAmount = %f	DamageToApply = %f"), *GetName(), DamageAmount, DamageToApply)
 
 		if (CurrentHealth <= 0.0)
 		{

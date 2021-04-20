@@ -85,7 +85,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 
 void AProjectile::TimerProjectileDestroy()
 {
-	UE_LOG(LogTemp, Warning, TEXT("%s is destroy"), *GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("%s is destroy"), *GetName());
 	Destroy();
 }
 
