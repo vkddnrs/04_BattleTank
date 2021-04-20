@@ -21,10 +21,15 @@ private:
 	void Tick(float DeltaSeconds) override;
 
 //****************************************************************************
-
+public:
+	virtual void SetPawn(APawn* InPawn) override;
+	
 protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = Setup)
 		void FoundAimingComponent(UTankAimingComponent* AimingComponentRef);
+
+	UFUNCTION()
+		void OnPossesedTankDeath();
 
 	// Starts moving the barrel of the tank to where
 	// the crosshairs intersect with the world.
@@ -41,6 +46,6 @@ protected:
 		int32 LineTraceRange = 1000000;
 
 private:
-	UTankAimingComponent* AimingComponent = nullptr;
+	UTankAimingComponent* AimingComponent = nullptr;	
 	
 };
