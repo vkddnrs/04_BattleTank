@@ -76,7 +76,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 		FVector EndLocation = StartLocation + LookDirection * LineTraceRange;
 		
 		// Line-trace along that LookDirection, and see what we hit (up to max range)
-		if(GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility))
+		if(GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Camera))
 		{
 			HitLocation = HitResult.Location;
 			return true;
